@@ -6,7 +6,11 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :facebook_id
       t.string :access_token
       t.string :photo_url
-
+      t.database_authenticatable
+      t.confirmable
+      t.recoverable
+      t.rememberable
+      t.trackable
       t.timestamps
     end
   end

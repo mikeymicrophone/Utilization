@@ -5,11 +5,15 @@ Utilization::Application.routes.draw do
 
   resources :likes
 
-  resources :users
+  devise_for :users do
+    match '/log_in' => 'devise/sessions#new'
+  end
 
   resources :things
   
   root :to => 'things#index'
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -11,8 +11,11 @@
   <%= link_to 'likes', likes_path %>
   <%= link_to 'haves', haves_path %>
   <%= link_to 'aspirations', aspirations_path %>
-  <%= link_to 'users', users_path %>
+  <%#= link_to 'users', users_path %>
 
+  <% if current_user %>
+    logged in as: <%= current_user.name %>
+  <% end %>
 <%= yield %>
 
 </body>
