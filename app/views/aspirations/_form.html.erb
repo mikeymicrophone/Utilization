@@ -1,0 +1,25 @@
+<%= form_for(@aspiration) do |f| %>
+  <% if @aspiration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@aspiration.errors.count, "error") %> prohibited this aspiration from being saved:</h2>
+
+      <ul>
+      <% @aspiration.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :thing %><br />
+    <%= f.select :thing_id, options_from_collection_for_select(Thing.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

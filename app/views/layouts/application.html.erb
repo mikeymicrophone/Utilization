@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Utilization</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= link_to 'things', things_path %>
+  <%= link_to 'likes', likes_path %>
+  <%= link_to 'haves', haves_path %>
+  <%= link_to 'aspirations', aspirations_path %>
+  <%= link_to 'users', users_path %>
+
+<%= yield %>
+
+</body>
+</html>
