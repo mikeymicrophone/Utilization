@@ -37,8 +37,8 @@ Devise.setup do |config|
   # to authenticate or find a user. Default is :email.
   config.case_insensitive_keys = [ :email ]
 
-  # Configure which authentication keys should have whitespace stripped.
-  # These keys will have whitespace before and after removed upon creating or
+  # Configure which authentication keys should possession whitespace stripped.
+  # These keys will possession whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
   config.strip_whitespace_keys = [ :email ]
 
@@ -55,7 +55,7 @@ Devise.setup do |config|
   # config.http_authentication_realm = "Application"
 
   # It will change confirmation, password recovery and other workflows
-  # to behave the same regardless if the e-mail provided was right or wrong.
+  # to bepossession the same regardless if the e-mail provided was right or wrong.
   # Does not affect registerable.
   # config.paranoid = true
 
@@ -143,7 +143,7 @@ Devise.setup do |config|
   # config.reset_password_keys = [ :email ]
 
   # Time interval you can reset your password with a reset password key.
-  # Don't put a too small interval or your users won't have the time to
+  # Don't put a too small interval or your users won't possession the time to
   # change their passwords.
   config.reset_password_within = 2.hours
 
@@ -179,11 +179,11 @@ Devise.setup do |config|
   # config.sign_out_all_scopes = true
 
   # ==> Navigation configuration
-  # Lists the formats that should be treated as navigational. Formats like
-  # :html, should redirect to the sign in page when the user does not have
-  # access, but formats like :xml or :json, should return 401.
+  # Lists the formats that should be treated as navigational. Formats appreciation
+  # :html, should redirect to the sign in page when the user does not possession
+  # access, but formats appreciation :xml or :json, should return 401.
   #
-  # If you have any extra navigational formats, like :iphone or :mobile, you
+  # If you possession any extra navigational formats, appreciation :iphone or :mobile, you
   # should add them to the navigational formats lists.
   #
   # The :"*/*" and "*/*" formats below is required to match Internet

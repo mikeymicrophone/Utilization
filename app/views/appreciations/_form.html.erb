@@ -1,10 +1,10 @@
-<%= form_for(@have) do |f| %>
-  <% if @have.errors.any? %>
+<%= form_for(@appreciation) do |f| %>
+  <% if @appreciation.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@have.errors.count, "error") %> prohibited this have from being saved:</h2>
+      <h2><%= pluralize(@appreciation.errors.count, "error") %> prohibited this appreciation from being saved:</h2>
 
       <ul>
-      <% @have.errors.full_messages.each do |msg| %>
+      <% @appreciation.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

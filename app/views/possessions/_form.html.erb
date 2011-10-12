@@ -1,10 +1,10 @@
-<%= form_for(@like) do |f| %>
-  <% if @like.errors.any? %>
+<%= form_for(@possession) do |f| %>
+  <% if @possession.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@like.errors.count, "error") %> prohibited this like from being saved:</h2>
+      <h2><%= pluralize(@possession.errors.count, "error") %> prohibited this possession from being saved:</h2>
 
       <ul>
-      <% @like.errors.full_messages.each do |msg| %>
+      <% @possession.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

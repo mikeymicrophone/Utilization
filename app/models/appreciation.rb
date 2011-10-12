@@ -1,4 +1,4 @@
-class Like < ActiveRecord::Base
+class Appreciation < ActiveRecord::Base
   belongs_to :thing
   belongs_to :user
 end

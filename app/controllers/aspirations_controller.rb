@@ -44,6 +44,7 @@ class AspirationsController < ApplicationController
 
     respond_to do |format|
       if @aspiration.save
+        format.js
         format.html { redirect_to @aspiration, notice: 'Aspiration was successfully created.' }
         format.json { render json: @aspiration, status: :created, location: @aspiration }
       else
