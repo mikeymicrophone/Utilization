@@ -16,6 +16,7 @@ end
 
 gem 'jquery-rails'
 gem 'devise'
+gem 'facebooker2'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -1,0 +1,9 @@
+development:
+  app_id: 217229511675317
+  secret: ce8da875683821f474d34e97a18b4e02
+  oauth2: true
+  
+production:
+  app_id: 217229511675317
+  secret: ce8da875683821f474d34e97a18b4e02
+  oauth2: true

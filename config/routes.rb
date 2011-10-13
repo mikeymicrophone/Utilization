@@ -14,6 +14,8 @@ Utilization::Application.routes.draw do
 
   resources :things
   
+  match '/connect' => 'facebook#login'
+  
   root :to => 'things#index'
   
   

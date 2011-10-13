@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
   def aspires_to_use? thing
     aspired_things.include? thing
   end
+  
+  def password_required?
+    facebook_id.blank? && super
+  end
 end
