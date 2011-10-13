@@ -1,9 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @thing.name %>
+  <b><%= @thing.name %></b>
 </p>
+
+<% if current_user %>
+  <% if current_user.appreciates?(@thing) %>
+    You appreciate this.
+  <% else %>
+    <%= link_to 'I appreciate this!', appreciations_path(:appreciation => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'appreciate_link' %>
+  <% end %>
+
+  <% if current_user.possesses?(@thing) %>
+    You possess this.
+  <% else %>
+    <%= link_to 'I possess this.', possessions_path(:possession => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'possess_link' %>
+  <% end %>
+  
+  <% if current_user.aspires_to_use?(@thing) %>
+    You would like to use this.
+  <% else %>
+    <%= link_to 'I want to use this.', aspirations_path(:aspiration => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'aspire_link' %>
+  <% end %>
+  
+<% end %>
 
 <p>
   <b>Make:</b>
@@ -11,13 +31,11 @@
 </p>
 
 <p>
-  <b>Photo url:</b>
-  <%= @thing.photo_url %>
+  <%= image_tag @thing.photo_url %>
 </p>
 
 <p>
-  <b>Url:</b>
-  <%= @thing.url %>
+  <%= link_to @thing.url, @thing.url %>
 </p>
 
 <p>
@@ -25,10 +43,6 @@
   <%= @thing.description %>
 </p>
 
-<p>
-  <b>User:</b>
-  <%#= @thing.user %>
-</p>
 
 
 <%= link_to 'Edit', edit_thing_path(@thing) %> |

@@ -40,6 +40,7 @@ class ThingsController < ApplicationController
   # POST /things
   # POST /things.json
   def create
+    params[:thing][:user_id] ||= current_user.id
     @thing = Thing.new(params[:thing])
 
     respond_to do |format|

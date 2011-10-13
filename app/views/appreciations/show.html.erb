@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Thing:</b>
+  <%= @appreciation.thing.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @appreciation.user.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_appreciation_path(@appreciation) %> |
+<%= link_to 'Back', appreciations_path %>

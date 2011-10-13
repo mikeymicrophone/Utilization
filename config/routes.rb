@@ -1,15 +1,19 @@
 Utilization::Application.routes.draw do
   resources :aspirations
 
-  resources :haves
+  resources :possessions
 
-  resources :likes
+  resources :appreciations
 
-  resources :users
+  devise_for :users do
+    match '/log_in' => 'devise/sessions#new'
+  end
 
   resources :things
   
   root :to => 'things#index'
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,7 +62,7 @@ Utilization::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
+  # You can possession the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
 

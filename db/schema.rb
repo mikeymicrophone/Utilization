@@ -13,6 +13,16 @@
 
 ActiveRecord::Schema.define(:version => 20111012202238) do
 
+  create_table "appreciations", :force => true do |t|
+    t.integer  "thing_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "appreciations", ["thing_id"], :name => "index_appreciations_on_thing_id"
+  add_index "appreciations", ["user_id"], :name => "index_appreciations_on_user_id"
+
   create_table "aspirations", :force => true do |t|
     t.integer  "thing_id"
     t.integer  "user_id"
@@ -23,25 +33,15 @@ ActiveRecord::Schema.define(:version => 20111012202238) do
   add_index "aspirations", ["thing_id"], :name => "index_aspirations_on_thing_id"
   add_index "aspirations", ["user_id"], :name => "index_aspirations_on_user_id"
 
-  create_table "haves", :force => true do |t|
+  create_table "possessions", :force => true do |t|
     t.integer  "thing_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "haves", ["thing_id"], :name => "index_haves_on_thing_id"
-  add_index "haves", ["user_id"], :name => "index_haves_on_user_id"
-
-  create_table "likes", :force => true do |t|
-    t.integer  "thing_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "likes", ["thing_id"], :name => "index_likes_on_thing_id"
-  add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
+  add_index "possessions", ["thing_id"], :name => "index_possessions_on_thing_id"
+  add_index "possessions", ["user_id"], :name => "index_possessions_on_user_id"
 
   create_table "things", :force => true do |t|
     t.string   "name"
@@ -62,6 +62,19 @@ ActiveRecord::Schema.define(:version => 20111012202238) do
     t.integer  "facebook_id"
     t.string   "access_token"
     t.string   "photo_url"
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

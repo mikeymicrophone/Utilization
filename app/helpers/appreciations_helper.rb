@@ -1,0 +1,2 @@
+module AppreciationsHelper
+end
