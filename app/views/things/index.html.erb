@@ -2,13 +2,13 @@
 
 <%= link_to 'New Thing', new_thing_path, :class => 'new-button' %>
 
-<% @things.each do |thing| %>
-  <ul class='things list'>
-    <li><%= link_to thing.name, thing %></li>
-    <li><%= thing.description %></li>
-  </ul>
-<% end %>
-
+<ul class='things list clearfix'>
+	<% @things.each do |thing| %>
+   		<li><%= link_to thing.name, thing %>
+    		<% if thing.description.present? %><div><%= thing.description %></div><% end %> 		
+			</li>
+	<% end %>
+</ul>
 <br />
 
 <%= link_to 'New Thing', new_thing_path, :class => 'new-button' %>
