@@ -7,14 +7,22 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-function have_thing(id) {
-	console.log('me/utilization:have?thing=http://3gj2.localtunnel.com/things/' + id);
-	FB.api('me/utilization:have?thing=http://3gj2.localtunnel.com/things/' + id, 'post', function(response) {
-    if (!response || response.error) {
-      console.log(response);
+function have_thing(id, token) {
+	$.post('https://graph.facebook.com/me/utilization:have?thing=http://3gj2.localtunnel.com/things/' + id + '&access_token=' + token, {},
+	function(response) {
+	    if (!response || response.error) {
+	      console.log(response);
 			console.log(response.error);
-    } else {
-      alert('Post was successful! Action ID: ' + response.id);
-    }
-  });
+	    } else {
+	      alert('Post was successful! Action ID: ' + response.id);
+	    }
+	  });
+	// FB.api('me/utilization:have?thing=http://3gj2.localtunnel.com/things/' + id, 'post', function(response) {
+	//     if (!response || response.error) {
+	//       console.log(response);
+	// 		console.log(response.error);
+	//     } else {
+	//       alert('Post was successful! Action ID: ' + response.id);
+	//     }
+	//   });
 }
