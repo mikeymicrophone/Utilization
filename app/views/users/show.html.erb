@@ -6,25 +6,26 @@
 </p>
 
 <p>
-  <b>Last name:</b>
-  <%= @user.last_name %>
+  <%= image_tag @user.photo_url %>
 </p>
 
-<p>
-  <b>Facebook:</b>
-  <%= @user.facebook_id %>
-</p>
+<div id="appreciates">
+	Likes:<hr>
+	<% @user.appreciated_things.each do |thing| %>
+	  <%= link_to thing.name, thing %>
+	<% end %>
+</div>
 
-<p>
-  <b>Access token:</b>
-  <%= @user.access_token %>
-</p>
+<div id="possessions">
+	Has:<hr>
+	<% @user.possessed_things.each do |thing| %>
+	  <%= link_to thing.name, thing %>
+	<% end %>
+</div>
 
-<p>
-  <b>Photo url:</b>
-  <%= @user.photo_url %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div id="aspirations">
+	Wants to use:<hr>
+	<% @user.aspired_things.each do |thing| %>
+	  <%= link_to thing.name, thing %>
+	<% end %>
+</div>

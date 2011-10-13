@@ -1,25 +1,5 @@
-<h1>Listing aspirations</h1>
-
-<table>
-  <tr>
-    <th>Thing</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>plans</h1>
 
 <% @aspirations.each do |aspiration| %>
-  <tr>
-    <td><%= aspiration.thing.name %></td>
-    <td><%= aspiration.user.name %></td>
-    <td><%= link_to 'Show', aspiration %></td>
-    <td><%= link_to 'Edit', edit_aspiration_path(aspiration) %></td>
-    <td><%= link_to 'Destroy', aspiration, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <%= link_to aspiration.user.name, aspiration.user %> <%= link_to 'wants to use', aspiration %> <%= link_to aspiration.thing.name, aspiration.thing %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Aspiration', new_aspiration_path %>

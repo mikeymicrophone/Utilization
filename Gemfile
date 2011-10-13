@@ -27,7 +27,7 @@ gem 'devise'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :production do
-  gem 'pg'
+  # gem 'pg'
 end
 
 group :development do

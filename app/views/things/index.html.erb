@@ -1,29 +1,11 @@
-<h1>Listing things</h1>
+<h1>Things. <%= link_to 'New Thing', new_thing_path %></h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Make</th>
-    <th>Photo url</th>
-    <th>Url</th>
-    <th>Description</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @things.each do |thing| %>
   <tr>
-    <td><%= thing.name %></td>
-    <td><%= thing.make %></td>
-    <td><%= thing.photo_url %></td>
-    <td><%= thing.url %></td>
+    <td><%= link_to thing.name, thing %></td>
     <td><%= thing.description %></td>
-    <td><%#= thing.user %></td>
-    <td><%= link_to 'Show', thing %></td>
-    <td><%= link_to 'Edit', edit_thing_path(thing) %></td>
-    <td><%= link_to 'Destroy', thing, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -1,25 +1,5 @@
-<h1>Listing appreciations</h1>
-
-<table>
-  <tr>
-    <th>Thing</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>Who likes what:</h1>
 
 <% @appreciations.each do |appreciation| %>
-  <tr>
-    <td><%= appreciation.thing.name %></td>
-    <td><%= appreciation.user.name %></td>
-    <td><%= link_to 'Show', appreciation %></td>
-    <td><%= link_to 'Edit', edit_appreciation_path(appreciation) %></td>
-    <td><%= link_to 'Destroy', appreciation, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <%= link_to appreciation.user.name, appreciation.user %> <%= link_to 'likes', appreciation %> <%= link_to appreciation.thing.name, appreciation.thing %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Appreciation', new_appreciation_path %>

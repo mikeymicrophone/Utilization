@@ -6,8 +6,11 @@ Utilization::Application.routes.draw do
   resources :appreciations
 
   devise_for :users do
-    match '/log_in' => 'devise/sessions#new'
+    match '/log_in' => 'devise/sessions#new', :as => 'log_in'
+    match '/log_out' => 'devise/sessions#destroy', :as => 'log_out'
   end
+  
+  resources :users, :only => :show
 
   resources :things
   

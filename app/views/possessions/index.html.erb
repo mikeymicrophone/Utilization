@@ -1,25 +1,5 @@
-<h1>Listing possessions</h1>
-
-<table>
-  <tr>
-    <th>Thing</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>possessions</h1>
 
 <% @possessions.each do |possession| %>
-  <tr>
-    <td><%= possession.thing.name %></td>
-    <td><%= possession.user.name %></td>
-    <td><%= link_to 'Show', possession %></td>
-    <td><%= link_to 'Edit', edit_possession_path(possession) %></td>
-    <td><%= link_to 'Destroy', possession, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <%= link_to possession.user.name, possession.user %> <%= link_to 'has', possession %> <%= link_to possession.thing.name, possession.thing %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Possession', new_possession_path %>
