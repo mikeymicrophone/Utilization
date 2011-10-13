@@ -1,0 +1,160 @@
+/* palette */
+$purple1: #332532;
+$purple2: #644D52;
+$orange: #F77A52;
+$yellow: #FF974F;
+$gray: #A49A87;
+
+/* font */
+.leckerli {
+	font-family: 'Leckerli One', 'Times', cursive;
+}
+.sans {
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+/* structure */
+body {
+	padding: 1.4em 1em;
+	width: 90%;
+	text-align:center;
+	background-color: lighten($yellow, 33%);
+	background-image: linear-gradient(transparent 50%, rgba(255,255,255,.5) 50%);
+	background-size: 50px;
+}
+a{ 
+	color: $orange;
+	text-decoration:none;
+	&:hover { 
+		text-decoration: underline;
+	}
+}
+header {
+	border-bottom: solid 1px $gray;
+	text-align: center;
+	@extend .clearfix;
+	h1 {
+		margin: 0.4em auto 0.6em;
+		@extend .leckerli;
+		color: $purple1;
+		text-shadow: 2px 2px 5px $purple2 + 11;
+		a { 
+			color : $purple1;
+		}
+	}
+	
+	nav{
+		margin: 0.3em auto 1.4em;
+		a {
+			@extend .sans;
+			color: $orange;
+			&:hover { 
+				background-color: $orange;
+				color: white;
+			}
+		}
+	}
+	#account-bar{
+		width: 100%;
+		a { 
+			@extend .sans;
+		}
+	}
+}
+
+section{
+	@extend .sans;
+	h1 {
+		font-size: 2em;
+		line-height: 2.1em;
+	}
+	a.new-button {
+		color: white;
+		border-radius: 6px;
+		font-size: 1.4em;
+		line-height: 1.5em;
+		background-color: $yellow;
+		padding: 0.2em;
+		margin: 0.1em;
+		box-shadow: 1px 1px 2px lighten($yellow, 10%);
+		&:hover{
+			background-color: lighten($yellow, 10%);
+			box-shadow: 1px 1px 2px lighten($yellow, 15%);
+		}
+		&:active{
+			background-color: lighten($yellow, 15%);
+			box-shadow: 1px 1px 2px lighten($yellow, 20%);
+		}
+	}
+	ul.things-list {
+		margin: 1em auto;
+		li {
+			a {
+				padding: 0.4em;
+				display: block;
+				border-radius: 6px;
+				box-shadow: 1px 1px 2px $purple2;
+				color: $purple1;
+				&:hover {
+					background-color: $purple2;
+					color:white;
+				}
+				&:active {
+					background-color: lighten($purple2,20%);
+				}
+			}
+		}
+	}
+}
+
+footer{
+	margin-top: 2em;
+	border-top: solid 1px $gray;
+	padding-top: 1em;
+	p { font-size: 0.6em;}
+}
+
+@media all and (max-width:30em) {
+	header h1 {
+		font-size: 4em;
+	}
+	nav {
+		ul {
+			width: 90%;
+			margin: 0.6em auto 0.4em;
+			li a {
+				display: block;
+				font-size: 1.5em;
+				line-height: 1.6em;
+				}
+		}
+	}
+	#account-bar {
+		margin: 0.3em auto 1em;
+	 	a { 
+			font-size: 1.4em;
+			line-height: 1.5em;
+			&:nth-child(2n){
+				border-left: solid 1px $gray;
+			}
+			&:hover {
+				background-color: lighten($yellow, 30%);
+			}
+		}
+	}
+
+
+}
+@media all and (min-width:30em) and (max-width:60em) {
+
+	header h1 {
+		font-size: 4em;
+	}
+}
+@media all and (min-width:60em) and (max-width:100em) {
+
+	header h1 {
+		font-size: 4em;
+		
+	}
+}

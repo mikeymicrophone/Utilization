@@ -1,15 +1,14 @@
-<h1>Things. <%= link_to 'New Thing', new_thing_path %></h1>
+<h1>Here's some things.</h1>
 
-<table>
+<%= link_to 'New Thing', new_thing_path, :class => 'new-button' %>
 
 <% @things.each do |thing| %>
-  <tr>
-    <td><%= link_to thing.name, thing %></td>
-    <td><%= thing.description %></td>
-  </tr>
+  <ul class='things-list'>
+    <li><%= link_to thing.name, thing %></li>
+    <li><%= thing.description %></li>
+  </ul>
 <% end %>
-</table>
 
 <br />
 
-<%= link_to 'New Thing', new_thing_path %>
+<%= link_to 'New Thing', new_thing_path, :class => 'new-button' %>

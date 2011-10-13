@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#" xmlns:utilization="http://ogp.me/ns/apps/utilization#">
 	<head>
   <title>Utilization</title>
-  <%= stylesheet_link_tag "application" %>
-	<link href='http://fonts.googleapis.com/css?family=Leckerli+One' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag '00scaffolds', '01reset', '02structure' %>
+	<link href='http://fonts.googleapis.com/css?family=Leckerli+One|Open+Sans+Condensed:300,300italic' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
 
   <%= csrf_meta_tags %>
@@ -13,7 +13,25 @@
 <body>
   
 	<header rel='main'>
-		<h1>Utilization</h1>
+		<h1><a href='/'>Utilization</a></h1>
+		<nav>
+			<ul>
+				<li><%= link_to 'things', things_path %></li>
+				<li><%= link_to 'appreciations', appreciations_path %></li>
+				<li><%= link_to 'possessions', possessions_path %></li>
+				<li><%= link_to 'aspirations', aspirations_path %></li>
+				<%#= link_to 'users', users_path %>
+			</ul>
+		</nav>
+		<div id="account-bar">
+			<% if current_user %>
+		    logged in as: <%= current_user.name %>
+		    <%= link_to 'log out', log_out_path %>
+		  <% else %>
+			  <%= link_to 'Log in', log_in_path %>
+			  <%= link_to 'Sign up', new_user_registration_path %>
+		  <% end %>
+		</div>
 	</header>
   <%= link_to 'things', things_path %>
   <%= link_to 'appreciations', appreciations_path %>
@@ -28,7 +46,11 @@
 	  <%= link_to 'Log in', log_in_path %>
 	  <%= link_to 'Sign up', new_user_registration_path %>
   <% end %>
-<%= yield %>
-<%= fb_connect_async_js %>
+
+  <section>
+  	<%= yield %>
+  </section>
+  <%= render 'layouts/footer' %>
+  <%= fb_connect_async_js %>
 </body>
 </html>

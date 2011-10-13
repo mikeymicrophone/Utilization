@@ -1,7 +1,9 @@
 <h1>Who likes what:</h1>
 
-<% @appreciations.each do |appreciation| %>
-  <%= div_for appreciation do %>
-    <%= link_to appreciation.user.name, appreciation.user %> <%= link_to 'likes', appreciation %> <%= link_to appreciation.thing.name, appreciation.thing %>
-  <% end %>
-<% end %>
+<ul class='things'>
+	<% @appreciations.each do |appreciation| %>
+	<li>
+  	<%= link_to appreciation.user.name, appreciation.user %> <span><%= link_to 'likes', appreciation %></span> <%= link_to appreciation.thing.name, appreciation.thing %>
+	</li>
+	<% end %>
+</ul>
