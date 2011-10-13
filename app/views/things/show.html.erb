@@ -51,7 +51,7 @@
 <%= content_for :fb_og_meta_tags do %> 
   <meta property="og:type" content="utilization:thing" /> 
   <meta property="og:title" content="<%= @thing.name %>" /> 
-  <meta property="og:image" content="<%= @thing.photo_url %>" /> 
-  <meta property="og:description" content="<%= @thing.description %>" /> 
+  <meta property="og:image" content="<%= @thing.photo_url.present? ? @thing.photo_url : 'http://school.discoveryeducation.com/clipart/images/backpack.gif'%>" /> 
+  <meta property="og:description" content="<%= @thing.description.present? ? @thing.description : @thing.name %>" />
   <meta property="og:url" content="<%= thing_url @thing %>">
 <% end %>
