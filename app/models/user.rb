@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
     first_name.to_s + ' ' + last_name.to_s
   end
   
+  def avatar_url
+    photo_url.present? ? photo_url : (facebook_id.present? ? "https://graph.facebook.com/#{facebook_id}/picture" : '')
+  end
+  
   def appreciates? thing
     appreciated_things.include? thing
   end

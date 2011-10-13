@@ -1,2 +1,2 @@
 $('#possess_link').remove();
-have_thing(<%= @possession.thing_id %>, FB.getAccessToken());
+share_activity_on_open_graph('<%= Facebooker2.instance_variable_get('@namespace') %>', 'have', <%= @possession.thing_id %>, '<%= request.host %>');

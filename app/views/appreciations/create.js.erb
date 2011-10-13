@@ -1,1 +1,2 @@
 $('#appreciate_link').remove();
+share_activity_on_open_graph('<%= Facebooker2.instance_variable_get('@namespace') %>', 'appreciate', <%= @appreciation.thing_id %>, '<%= request.host %>');

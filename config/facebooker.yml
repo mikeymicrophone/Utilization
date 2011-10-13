@@ -1,9 +1,11 @@
 development:
-  app_id: 217229511675317
-  secret: ce8da875683821f474d34e97a18b4e02
+  app_id: 160742257352123
+  secret: acb1b862e9b6bc34b01f03a83066a000
   oauth2: true
+  namespace: utilizationd
   
 production:
   app_id: 217229511675317
   secret: ce8da875683821f474d34e97a18b4e02
   oauth2: true
+  namespace: utilization

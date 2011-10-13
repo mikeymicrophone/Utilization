@@ -2,7 +2,6 @@ class FacebookController < ApplicationController
   def login
     if current_facebook_user
       current_facebook_user.fetch
-      debugger
       @user = User.find_by_email current_facebook_user.email
       if @user
         @user.update_attributes :facebook_id => current_facebook_user.id, :access_token => current_facebook_user.client.access_token

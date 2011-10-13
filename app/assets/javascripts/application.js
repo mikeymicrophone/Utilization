@@ -7,15 +7,24 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-function have_thing(id, token) {
-	// $.post('https://graph.facebook.com/me/utilization:have?thing=http://3gj2.localtunnel.com/things/' + id + '&access_token=' + token, {},
-	// function(response) {
-	//     if (!response || response.error) {
-	//       console.log(response);
-	// 		console.log(response.error);
-	//     } else {
-	//       alert('Post was successful! Action ID: ' + response.id);
-	//     }
-	//   });
-	FB.api('/me/utilization:have?thing=http://3gj2.localtunnel.com/things/' + id, 'post');
+function share_activity_on_open_graph(app, action, thing_id, domain) {
+	console.log('/me/' + app + ':' + action + '?thing=http://' + domain + '/things/' + thing_id);
+	FB.api('/me/' + app + ':' + action + '?thing=http://' + domain + '/things/' + thing_id, 'post', function(response) {
+		if (!response || response.error) {
+			console.log(response);
+			console.log(response.error);
+		}
+	});
 }
+// 
+// function have_thing(id) {
+// 	FB.api('/me/utilization:have?thing=http://3gj2.localtunnel.com/things/' + id, 'post');
+// }
+// 
+// function aspire_to_use_thing(id) {
+// 	FB.api('/me/utilization:want_to_use?thing=http://3gj2.localtunnel.com/things/' + id, 'post');
+// }
+// 
+// function like_thing(id) {
+// 	FB.api('/me/utilization:appreciate?thing=http://3gj2.localtunnel.com/things/' + id, 'post');
+// }
