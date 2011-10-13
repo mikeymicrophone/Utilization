@@ -12,7 +12,13 @@ Utilization::Application.routes.draw do
   
   resources :users, :only => :show
 
-  resources :things
+  resources :things do
+    member do
+      get :owners
+      get :appreciators
+      get :aspiring_users
+    end
+  end
   
   match '/connect' => 'facebook#login'
   

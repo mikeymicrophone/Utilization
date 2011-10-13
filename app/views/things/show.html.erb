@@ -3,27 +3,31 @@
 <h1><%= @thing.name %></h1>
 
 <div id='actions'>
-<% if current_user %>
-  <% if current_user.appreciates?(@thing) %>
-    <span>You appreciate this.</span>
-  <% else %>
-    <%= link_to 'I appreciate this!', appreciations_path(:appreciation => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'appreciate_link', :class => 'action' %>
-  <% end %>
+  <% if current_user %>
+    <% if current_user.appreciates?(@thing) %>
+      <span>You appreciate this.</span>
+    <% else %>
+      <%= link_to 'I appreciate this!', appreciations_path(:appreciation => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'appreciate_link', :class => 'action' %>
+    <% end %>
 
-  <% if current_user.possesses?(@thing) %>
-    <span>You possess this.</span>
-  <% else %>
-    <%= link_to 'I possess this.', possessions_path(:possession => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'possess_link', :class => 'action' %>
-  <% end %>
+    <% if current_user.possesses?(@thing) %>
+      <span>You possess this.</span>
+    <% else %>
+      <%= link_to 'I possess this.', possessions_path(:possession => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'possess_link', :class => 'action' %>
+    <% end %>
   
-  <% if current_user.aspires_to_use?(@thing) %>
-   <span>You would like to use this.</span>
-  <% else %>
-    <%= link_to 'I want to use this.', aspirations_path(:aspiration => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'aspire_link', :class => 'action' %>
+    <% if current_user.aspires_to_use?(@thing) %>
+     <span>You would like to use this.</span>
+    <% else %>
+      <%= link_to 'I want to use this.', aspirations_path(:aspiration => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'aspire_link', :class => 'action' %>
+    <% end %>
   <% end %>
 </div>
-  
-<% end %>
+<div id='rollup'>
+  <span><%= link_to(pluralize(@thing.appreciations.count, 'person') + (@thing.appreciations.count == 1 ? ' appreciates' : ' appreciate') + ' this.', appreciators_thing_path(@thing)) %></span>
+  <span><%= link_to(pluralize(@thing.possessions.count, 'person') + (@thing.possessions.count == 1 ? ' has' : ' have') + ' one.', owners_thing_path(@thing)) %></span>
+  <span><%= link_to(pluralize(@thing.aspirations.count, 'person') + ' would like to use it.', aspiring_users_thing_path(@thing)) %></span>
+</div>
 
 <p>
   <%= @thing.make if @thing.make.present? %>
@@ -35,15 +39,13 @@
   <%= link_to @thing.url, @thing.url if @thing.url.present? %>
 </p>
 <hr>
-<h2>Description:</h2>
 <p>
   <%= @thing.description %>
 </p>
 
 
 
-<%= link_to 'Edit', edit_thing_path(@thing) %> |
-<%= link_to 'Back', things_path %>
+<%= link_to "Edit #{@thing.name}", edit_thing_path(@thing) if @thing.user == current_user %>
 
 <%= content_for :fb_og_meta_tags do %> 
   <meta property="og:type" content="utilization:thing" /> 

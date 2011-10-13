@@ -1,4 +1,23 @@
 class ThingsController < ApplicationController
+  
+  def owners
+    @thing = Thing.find params[:id]
+    @users = @thing.owners
+    render :action => 'users/index'
+  end
+  
+  def appreciators
+    @thing = Thing.find params[:id]
+    @users = @thing.appreciators
+    render :action => 'users/index'
+  end
+  
+  def aspiring_users
+    @thing = Thing.find params[:id]
+    @users = @thing.aspiring_users
+    render :action => 'users/index'
+  end
+  
   # GET /things
   # GET /things.json
   def index

@@ -278,6 +278,14 @@ footer{
 				margin: 0.1em;
 			}
 		}
+		div#rollup {
+  		display: block;
+  		text-align: center;
+		  a, span {
+  			display: inline;
+			  font-size: 0.6em;
+			}
+		}
 	}
 }
 @media all and (min-width:60em) {
