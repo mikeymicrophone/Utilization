@@ -1,31 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>First name:</b>
-  <%= @user.first_name %>
-</p>
+<h1>
+  <%= @user.first_name %>   <%= @user.last_name %> 
+</h1>
 
-<p>
+<figure>
   <%= image_tag @user.photo_url %>
-</p>
-
-<div id="appreciates">
-	Likes:<hr>
+</figure>
+<hr>
+<div id="appreciates" class='about'>
+	<label>Likes:</label>
+	<ul>
 	<% @user.appreciated_things.each do |thing| %>
-	  <%= link_to thing.name, thing %>
+	  <li><%= link_to thing.name, thing %></li>
 	<% end %>
+	</ul>
 </div>
-
-<div id="possessions">
-	Has:<hr>
+<hr>
+<div id="possessions" class='about'>
+	<label>Has:</label>
+	<ul>	
 	<% @user.possessed_things.each do |thing| %>
-	  <%= link_to thing.name, thing %>
+	  <li><%= link_to thing.name, thing %></li>
 	<% end %>
+	</ul>	
 </div>
-
-<div id="aspirations">
-	Wants to use:<hr>
+<hr>
+<div id="aspirations" class='about'>
+	<label>Wants to use:</label>
+	<ul>	
 	<% @user.aspired_things.each do |thing| %>
-	  <%= link_to thing.name, thing %>
+	  <li><%= link_to thing.name, thing %></li>
 	<% end %>
+	<ul>	
 </div>

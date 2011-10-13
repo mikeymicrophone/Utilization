@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b><%= @thing.name %></b>
-</p>
+<h1><%= @thing.name %></h1>
 
 <% if current_user %>
   <% if current_user.appreciates?(@thing) %>
@@ -25,21 +23,19 @@
   
 <% end %>
 
+<h2>Make:</h2>
 <p>
-  <b>Make:</b>
   <%= @thing.make %>
 </p>
-
 <p>
   <%= image_tag @thing.photo_url %>
 </p>
-
 <p>
   <%= link_to @thing.url, @thing.url %>
 </p>
-
+<hr>
+<h2>Description:</h2>
 <p>
-  <b>Description:</b>
   <%= @thing.description %>
 </p>
 

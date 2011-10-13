@@ -1,7 +1,9 @@
-<h1>possessions</h1>
+<h1>Possessions</h1>
 
+<ul class='things possession'>
 <% @possessions.each do |possession| %>
   <%= div_for possession do %>
-    <%= link_to possession.user.name, possession.user %> <%= link_to 'has', possession %> <%= link_to possession.thing.name, possession.thing %>
+		<li><%= link_to possession.user.name, possession.user %> <span><%= link_to 'has', possession %></span> <%= link_to possession.thing.name, possession.thing %></li>  
   <% end %>
 <% end %>
+</ul>

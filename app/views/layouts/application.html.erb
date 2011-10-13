@@ -33,20 +33,7 @@
 		  <% end %>
 		</div>
 	</header>
-  <%= link_to 'things', things_path %>
-  <%= link_to 'appreciations', appreciations_path %>
-  <%= link_to 'possessions', possessions_path %>
-  <%= link_to 'aspirations', aspirations_path %>
-  <%#= link_to 'users', users_path %>
-
-  <% if current_user %>
-    logged in as: <%= current_user.name %>
-    <%= link_to 'log out', log_out_path %>
-  <% else %>
-	  <%= link_to 'Log in', log_in_path %>
-	  <%= link_to 'Sign up', new_user_registration_path %>
-  <% end %>
-
+ 
   <section>
   	<%= yield %>
   </section>

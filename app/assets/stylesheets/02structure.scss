@@ -14,6 +14,7 @@ $gray: #A49A87;
 }
 
 /* structure */
+html{ overflow-x: hidden;}
 body {
 	padding: 1.4em 1em;
 	width: 90%;
@@ -48,6 +49,9 @@ header {
 		a {
 			@extend .sans;
 			color: $orange;
+			display: block;
+			font-size: 1.4em;
+			line-height: 1.6em;
 			&:hover { 
 				background-color: $orange;
 				color: white;
@@ -56,8 +60,17 @@ header {
 	}
 	#account-bar{
 		width: 100%;
+		margin: 0.3em auto 1em;
 		a { 
 			@extend .sans;
+			font-size: 1.4em;
+			line-height: 1.5em;
+			&:nth-child(2n){
+				border-left: solid 1px $gray;
+			}
+			&:hover {
+				background-color: lighten($yellow, 30%);
+			}
 		}
 	}
 }
@@ -86,24 +99,61 @@ section{
 			box-shadow: 1px 1px 2px lighten($yellow, 20%);
 		}
 	}
-	ul.things-list {
+	.things {
 		margin: 1em auto;
+		ul { margin: 1em 0;}
 		li {
 			a {
 				padding: 0.4em;
-				display: block;
 				border-radius: 6px;
-				box-shadow: 1px 1px 2px $purple2;
 				color: $purple1;
-				&:hover {
-					background-color: $purple2;
-					color:white;
-				}
-				&:active {
-					background-color: lighten($purple2,20%);
-				}
+			}
+			span a {font-style: italic; }
+		}
+	}
+	.list { 
+		@extend .things;
+		a {				
+			display: block;
+			box-shadow: 1px 1px 2px $purple2;
+			&:hover {
+				background-color: $purple2;
+				color:white;
+			}
+			&:active {
+				box-shadow: 1px 1px 2px $purple2;
 			}
 		}
+	}
+	.appreciate { 
+		@extend .things;
+		@extend .sans;
+		a {
+			display: inline;
+			font-size: 1.5em;
+		}
+		span a{
+			color: lighten($purple2, 15%);
+		}
+	}
+	.possession {
+		@extend .appreciate;
+	}
+	.aspiration {
+		@extend .appreciate;
+	}
+	
+	.about {
+		margin: 0.2em 0 1em;
+		label {
+			font-size: 1.3em;
+		}
+		ul {margin-top: 0.5em;}
+	}
+	
+	h2 {
+		font-size: 1.4em;
+		line-height: 1.5em;
 	}
 }
 
@@ -114,7 +164,8 @@ footer{
 	p { font-size: 0.6em;}
 }
 
-@media all and (max-width:30em) {
+/* mobile version */
+@media all and (max-width:40em) {
 	header h1 {
 		font-size: 4em;
 	}
@@ -129,27 +180,34 @@ footer{
 				}
 		}
 	}
-	#account-bar {
-		margin: 0.3em auto 1em;
-	 	a { 
-			font-size: 1.4em;
-			line-height: 1.5em;
-			&:nth-child(2n){
-				border-left: solid 1px $gray;
-			}
-			&:hover {
-				background-color: lighten($yellow, 30%);
-			}
+}
+
+@media all and (min-width:40em) and (max-width:60em) {
+	header {
+		position: relative;
+		text-align: right;
+		h1 {
+			float: left;
+			font-size: 4em;
+		}
+		nav {
+			position: absolute;
+			top: 0.1em;
+			right: 0.2em;
+			width: 60%;
+				li {
+					margin: 0.3em;
+					display: inline;
+				}
+				a { display: inline;}
+		}
+		#account-bar{
+
 		}
 	}
-
-
-}
-@media all and (min-width:30em) and (max-width:60em) {
-
-	header h1 {
-		font-size: 4em;
-	}
+	section { 
+		clear: both;
+		}
 }
 @media all and (min-width:60em) and (max-width:100em) {
 
