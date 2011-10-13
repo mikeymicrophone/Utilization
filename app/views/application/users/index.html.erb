@@ -1,5 +1,8 @@
 <% @users.each do |user| %>
-  <%= user.name %>
-  <%= user.facebook_id %>
-  <%= image_tag user.avatar_url if user.avatar_url.present? %>
+  <div>
+    <%= image_tag user.avatar_url if user.avatar_url.present? %>
+    <%= user.name %>
+    <%= user.city %>
+    <%= link_to user.facebook_id, 'http://facebook.com/profile.php?id=' + user.facebook_id.to_s if user.facebook_id.present? %>
+  </div>
 <% end %>

@@ -1,20 +1,16 @@
 class ThingsController < ApplicationController
+  before_filter :get_thing, :get_users, :only => [:owners, :appreciators, :aspiring_users]
+  after_filter :friend_ids, :your_city, :only => [:owners, :appreciators, :aspiring_users]
   
   def owners
-    @thing = Thing.find params[:id]
-    @users = @thing.owners
     render :action => 'users/index'
   end
   
   def appreciators
-    @thing = Thing.find params[:id]
-    @users = @thing.appreciators
     render :action => 'users/index'
   end
   
   def aspiring_users
-    @thing = Thing.find params[:id]
-    @users = @thing.aspiring_users
     render :action => 'users/index'
   end
   
@@ -99,5 +95,28 @@ class ThingsController < ApplicationController
       format.html { redirect_to things_url }
       format.json { head :ok }
     end
+  end
+  
+  protected
+  
+  def friend_ids
+    if current_facebook_user
+      @friend_ids = current_facebook_user.friends.map(&:id)
+      @users.sort_by { |u| @friend_ids.include? u.facebook_id }
+    end
+  end
+  
+  def your_city
+    if current_user.andand.city.present?
+      @users.sort_by { |u| @friend_ids.include?(u.facebook_id) || current_user.city == u.city }
+    end
+  end
+  
+  def get_thing
+    @thing = Thing.find params[:id]
+  end
+  
+  def get_users
+    @users = @thing.send(params[:action])
   end
 end
