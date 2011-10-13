@@ -5,7 +5,7 @@
 </h1>
 
 <figure>
-  <%= image_tag @user.avatar_url %>
+  <%= image_tag @user.avatar_url if @user.avatar_url.present? %>
 </figure>
 <hr>
 <div id="appreciates" class='about'>

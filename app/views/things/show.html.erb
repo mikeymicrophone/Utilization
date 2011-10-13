@@ -25,15 +25,14 @@
   
 <% end %>
 
-<h2>Make:</h2>
 <p>
-  <%= @thing.make %>
+  <%= @thing.make if @thing.make.present? %>
 </p>
 <p>
-  <%= image_tag @thing.photo_url %>
+  <%= image_tag @thing.photo_url if @thing.photo_url.present? %>
 </p>
 <p>
-  <%= link_to @thing.url, @thing.url %>
+  <%= link_to @thing.url, @thing.url if @thing.url.present? %>
 </p>
 <hr>
 <h2>Description:</h2>
