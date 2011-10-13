@@ -2,24 +2,26 @@
 
 <h1><%= @thing.name %></h1>
 
+<div id='actions'>
 <% if current_user %>
   <% if current_user.appreciates?(@thing) %>
-    You appreciate this.
+    <span>You appreciate this.</span>
   <% else %>
-    <%= link_to 'I appreciate this!', appreciations_path(:appreciation => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'appreciate_link' %>
+    <%= link_to 'I appreciate this!', appreciations_path(:appreciation => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'appreciate_link', :class => 'action' %>
   <% end %>
 
   <% if current_user.possesses?(@thing) %>
-    You possess this.
+    <span>You possess this.</span>
   <% else %>
-    <%= link_to 'I possess this.', possessions_path(:possession => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'possess_link' %>
+    <%= link_to 'I possess this.', possessions_path(:possession => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'possess_link', :class => 'action' %>
   <% end %>
   
   <% if current_user.aspires_to_use?(@thing) %>
-    You would like to use this.
+   <span>You would like to use this.</span>
   <% else %>
-    <%= link_to 'I want to use this.', aspirations_path(:aspiration => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'aspire_link' %>
+    <%= link_to 'I want to use this.', aspirations_path(:aspiration => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'aspire_link', :class => 'action' %>
   <% end %>
+</div>
   
 <% end %>
 
