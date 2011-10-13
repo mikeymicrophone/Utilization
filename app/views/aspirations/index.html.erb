@@ -1,5 +1,7 @@
 <h1>plans</h1>
 
 <% @aspirations.each do |aspiration| %>
-  <%= link_to aspiration.user.name, aspiration.user %> <%= link_to 'wants to use', aspiration %> <%= link_to aspiration.thing.name, aspiration.thing %>
+  <%= div_for aspiration do %>
+    <%= link_to aspiration.user.name, aspiration.user %> <%= link_to 'wants to use', aspiration %> <%= link_to aspiration.thing.name, aspiration.thing %>
+  <% end %>
 <% end %>

@@ -47,3 +47,11 @@
 
 <%= link_to 'Edit', edit_thing_path(@thing) %> |
 <%= link_to 'Back', things_path %>
+
+<%= content_for :fb_og_meta_tags do %> 
+  <meta property="og:type" content="utilization:thing" /> 
+  <meta property="og:title" content="<%= @thing.name %>" /> 
+  <meta property="og:image" content="<%= @thing.photo_url %>" /> 
+  <meta property="og:description" content="<%= @thing.description %>" /> 
+  <meta property="og:url" content="<%= thing_url @thing %>">
+<% end %>

@@ -15,5 +15,4 @@
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
-<%= fb_connect_async_js %>
-<%= fb_login_and_redirect '/connect' %>
+<%= fb_login_and_redirect '/connect', :scope => 'publish_actions, email' %>
