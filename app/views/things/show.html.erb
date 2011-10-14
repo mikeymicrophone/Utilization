@@ -23,11 +23,15 @@
     <% end %>
   <% end %>
 </div>
-<div id='rollup'>
-  <span><%= link_to(pluralize(@thing.appreciations.count, 'person') + (@thing.appreciations.count == 1 ? ' appreciates' : ' appreciate') + ' this.', appreciators_thing_path(@thing)) %></span>
-  <span><%= link_to(pluralize(@thing.possessions.count, 'person') + (@thing.possessions.count == 1 ? ' has' : ' have') + ' one.', owners_thing_path(@thing)) %></span>
-  <span><%= link_to(pluralize(@thing.aspirations.count, 'person') + ' would like to use it.', aspiring_users_thing_path(@thing)) %></span>
-</div>
+
+<div class='rollup'>
+	<label>You're not alone</label>
+	<ul>
+		<li><%= link_to(pluralize(@thing.appreciations.count, 'person') + (@thing.appreciations.count == 1 ? ' appreciates' : ' appreciate') + ' this.', appreciators_thing_path(@thing)) %></li>
+		<li><%= link_to(pluralize(@thing.possessions.count, 'person') + (@thing.possessions.count == 1 ? ' has' : ' have') + ' one.', owners_thing_path(@thing)) %></li>
+		<li><%= link_to(pluralize(@thing.aspirations.count, 'person') + ' would like to use it.', aspiring_users_thing_path(@thing)) %></li>
+	</ul>
+</div>		
 
 <p>
   <%= @thing.make if @thing.make.present? %>

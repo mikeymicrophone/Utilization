@@ -20,7 +20,6 @@ body {
 	width: 90%;
 	text-align: center;
 	background-color: lighten($yellow, 33%);
-	background-image: linear-gradient(transparent 50%, rgba(255,255,255,.5) 50%);
 	background-size: 50px;
 }
 a{ 
@@ -35,12 +34,16 @@ header {
 	margin: 0 auto;
 	@extend .clearfix;
 	h1 {
-		margin: 0.4em auto 0.6em;
+		margin: 0.1em auto 0.1em;
 		@extend .leckerli;
 		color: $purple1;
+		line-height: 1em;
 		text-shadow: 2px 2px 5px $purple2 + 11;
 		a { 
 			color : $purple1;
+		}
+		&:hover {
+			cursor: pointer;
 		}
 	}
 	
@@ -128,11 +131,13 @@ section{
 		}
 	}
 	.appreciate { 
-		@extend .things;
 		@extend .sans;
 		a {
 			display: inline;
-			font-size: 1.5em;
+			font-size: 1em;
+			padding: 0;
+			margin: 0;
+			color: $purple1;
 		}
 		span a{
 			color: lighten($purple2, 15%);
@@ -143,6 +148,25 @@ section{
 	}
 	.aspiration {
 		@extend .appreciate;
+	}
+	
+	.rollup {
+		label { 
+			@extend .leckerli;
+			font-size: 1.3em;
+			line-height: 1.4em;
+			color: darken($orange, 10%);
+		}
+		ul{
+			border: solid 1px $gray;
+			padding: 0.8em 0.2em;
+			border-radius: 6px;
+			background-color: lighten($yellow, 30%);
+			li { 
+				font-size: 1.1em;
+				line-height: 1.4em;
+			}
+		}
 	}
 	
 	.about {
@@ -161,8 +185,9 @@ section{
 	div#actions{
 	margin: 1em 0;
 		a, span {
+
 			padding: 0.3em 0.5em;
-			font-size: 1.3em;
+			font-size: 1.4em;
 			margin: 0.1em;
 			display: block;
 		}
@@ -181,6 +206,7 @@ section{
 		span {text-decoration: underline;}
 	}
 	form {
+		margin: 0.2em;
 		label { font-size: 1.2em;}
 		input[type='text'] {
 			@extend .sans;
@@ -202,7 +228,7 @@ footer{
 }
 
 /* mobile version */
-@media all and (max-width:50em) {
+@media all and (max-width:40em) {
 	header h1 {
 		font-size: 4em;
 	}
@@ -222,7 +248,7 @@ footer{
 	}
 }
 
-@media all and (min-width:50em) and (max-width:60em) {
+@media all and (min-width:40em) and (max-width:60em) {
 	header {
 		position: relative;
 		text-align: right;
@@ -230,20 +256,21 @@ footer{
 		
 		h1 {
 			float: left;
-			font-size: 3.6em;
+			font-size: 3.3em;
+			line-height: 1em;
 		}
 		nav {
 			position: absolute;
 			top: 0.1em;
 			right: 0.1em;
-			width: 55%;
+			width: 70%;
 				li {
 					display: inline;
 				}
 				a { 
 					display: inline;
-					padding: 0.2em 0.4em;
-					font-size: 1.3em;
+					padding: 0.2em 0.3em;
+					font-size: 1.2em;
 					border-radius: 6px;
 				}
 		}
@@ -273,17 +300,20 @@ footer{
 			display: block;
 			text-align: center;
 			a, span {
+				width: 30%;
 				display: inline;
-				font-size: 1.6em;
+				font-size: 1em;
 				margin: 0.1em;
 			}
 		}
-		div#rollup {
-  		display: block;
-  		text-align: center;
-		  a, span {
-  			display: inline;
-			  font-size: 0.6em;
+		div.rollup {
+			padding-left: 50%;
+			ul{
+			  a, span {
+	  			display: block;
+				  font-size: 0.9em;
+					padding-left: 3em;
+				}
 			}
 		}
 	}
@@ -346,6 +376,18 @@ footer{
 				text-align: center;
 
 				&:hover {	border-radius: none;}
+			}
+		}
+		div.rollup {
+			padding-left: 50%;
+			margin: 1.2em 0;
+			label{ font-size: 2em;}
+			ul{
+			  a, span {
+	  			display: block;
+				  font-size: 0.9em;
+					padding-left: 3em;
+				}
 			}
 		}
 	}
