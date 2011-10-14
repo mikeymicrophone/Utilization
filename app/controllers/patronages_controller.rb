@@ -41,14 +41,17 @@ class PatronagesController < ApplicationController
   # POST /patronages
   # POST /patronages.json
   def create
-    @characteristic = Characteristic.new :thing_id => params[:thing_id]
-    @characteristic.detail_text = params[:detail_text]
-    @characteristic.find_or_save
-    params[:patronage] = {:characteristic_id => @characteristic.id, :user_id => current_user.id}
+    unless params[:patronage].present?
+      @characteristic = Characteristic.new :thing_id => params[:thing_id]
+      @characteristic.detail_text = params[:detail_text]
+      @characteristic = @characteristic.find_or_save
+      params[:patronage] = {:characteristic_id => @characteristic.id, :user_id => current_user.id}
+    end
     @patronage = Patronage.new(params[:patronage])
 
     respond_to do |format|
       if @patronage.save
+        format.js
         format.html { redirect_to @patronage, notice: 'Patronage was successfully created.' }
         format.json { render json: @patronage, status: :created, location: @patronage }
       else
