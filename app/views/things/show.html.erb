@@ -43,6 +43,13 @@
   <%= @thing.description %>
 </p>
 
+<% if @thing.details.present? %>
+  <ul>
+    <% @thing.details.each do |detail| %>
+      <li><%= detail.text %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 
 <%= link_to "Edit #{@thing.name}", edit_thing_path(@thing) if @thing.user == current_user %>
