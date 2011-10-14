@@ -45,8 +45,11 @@
 
 <% if @thing.details.present? %>
   <ul>
-    <% @thing.details.each do |detail| %>
-      <li><%= detail.text %></li>
+    <% @thing.characteristics.each do |characteristic| %>
+      <li>
+        <%= characteristic.detail.text %>
+        <%= link_to pluralize(Patronage.where(:characteristic_id => characteristic).count, 'person') + (Patronage.where(:characteristic_id => characteristic).count == 1 ? ' thinks' : ' think') + ' so.', patrons_characteristic_path(characteristic) %>
+      </li>
     <% end %>
   </ul>
 <% end %>
