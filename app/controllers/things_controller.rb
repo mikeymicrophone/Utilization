@@ -17,11 +17,6 @@ class ThingsController < ApplicationController
   # GET /things
   # GET /things.json
   def index
-    #randomize things
-    #sort things
-    #by creator, creators in random order
-    #hr between days
-    
     @things = if params[:sort].present?
       Thing.send params[:sort]
     else
@@ -64,11 +59,20 @@ class ThingsController < ApplicationController
   # POST /things
   # POST /things.json
   def create
-    params[:thing][:user_id] ||= current_user.id
+    params[:thing][:user_id] ||= current_user.andand.id
     @thing = Thing.new(params[:thing])
+    
+    unless params[:overruled]
+      @existing_thing = Thing.find_by_name(@thing.name)
+    
+      if @existing_thing
+        render(:action => 'existing_thing') && return
+      end
+    end
 
     respond_to do |format|
       if @thing.save
+        format.js
         format.html { redirect_to @thing, notice: 'Ready for action.' }
         format.json { render json: @thing, status: :created, location: @thing }
       else

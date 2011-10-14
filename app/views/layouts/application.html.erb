@@ -25,7 +25,7 @@
 		</nav>
 		<div id="account-bar">
 			<% if current_user %>
-		    logged in as: <%= current_user.name %>
+		    logged in as: <%= link_to current_user.name, current_user %>
 		    <%= link_to 'log out', log_out_path %>
 		  <% else %>
 			  <%= link_to 'Log in', log_in_path %>

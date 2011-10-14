@@ -1,0 +1,44 @@
+There is already a thing called <%= link_to @existing_thing.name, @existing_thing %>.  If you want to make another, you can!  Here are the other details we have about this thing:
+
+<% if @existing_thing.make.present? %>
+  <div>
+    made by: <%= @existing_thing.make %>
+  </div>
+<% end %>
+
+<% if @existing_thing.description.present? %>
+  <div>
+    <%= @existing_thing.description %>
+  </div>
+<% end %>
+
+<% if @existing_thing.photo_url.present? %>
+  <div>
+    <%= image_tag @existing_thing.photo_url %>
+  </div>
+<% end %>
+
+<% if @existing_thing.url.present? %>
+  <div>
+    <%= link_to @existing_thing.url, @existing_thing.url %>
+  </div>
+<% end %>
+
+<% if @existing_thing.details.present? %>
+  Additional details:
+  <ul>
+    <% @existing_thing.details.each do |detail| %>
+      <li><%= detail.text %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div id='rollup'>
+  <span><%= link_to(pluralize(@existing_thing.appreciations.count, 'person') + (@existing_thing.appreciations.count == 1 ? ' appreciates' : ' appreciate') + ' this.', appreciators_thing_path(@existing_thing)) %></span>
+  <span><%= link_to(pluralize(@existing_thing.possessions.count, 'person') + (@existing_thing.possessions.count == 1 ? ' has' : ' have') + ' one.', owners_thing_path(@existing_thing)) %></span>
+  <span><%= link_to(pluralize(@existing_thing.aspirations.count, 'person') + ' would like to use it.', aspiring_users_thing_path(@existing_thing)) %></span>
+</div>
+
+To continue with creating a new thing, just use this form.
+<% @overruled = true %>
+<%= render 'form' %>

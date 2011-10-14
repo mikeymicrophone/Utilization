@@ -7,12 +7,23 @@
   <%= f.text_field :name %>
 <% end %>
 <%= link_to_function 'New Thing', "$('#new_thing').submit()", :class => 'new-button' %>
+<script type="text/javascript">
+  $('#new_thing').submit(function() {
+    $.post('/things', {thing: {name: $('#thing_name').val()}});
+    return false;
+  })
+</script>
 
 <ul class='things list clearfix'>
 	<% @things.each do |thing| %>
-   		<li><%= link_to thing.name, thing %>
-    		<% if thing.description.present? %><div><%= thing.description %></div><% end %> 		
-			</li>
+ 		<li>
+ 		  <%= link_to thing.name, thing %>
+  		<% if thing.description.present? %>
+  		  <div>
+  		    <%= thing.description %>
+  		  </div>
+  		<% end %>
+		</li>
 	<% end %>
 </ul>
 <br />
