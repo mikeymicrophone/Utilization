@@ -49,6 +49,7 @@
       <li>
         <%= characteristic.detail.text %>
         <%= link_to pluralize(Patronage.where(:characteristic_id => characteristic).count, 'person') + (Patronage.where(:characteristic_id => characteristic).count == 1 ? ' thinks' : ' think') + ' so.', patrons_characteristic_path(characteristic) %>
+        <%= link_to "and I agree!", patronages_path(:patronage => {:characteristic_id => characteristic.id, :user_id => current_user.id}), :method => :post, :remote => true unless Patronage.where(:user_id => current_user.id, :characteristic_id => characteristic.id).present? %>
       </li>
     <% end %>
   </ul>
