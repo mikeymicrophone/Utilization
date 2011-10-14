@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :first_name
       t.string :last_name
-      t.integer :facebook_id
+      t.integer :facebook_id, :limit => 8
       t.string :access_token
       t.string :photo_url
       t.database_authenticatable
