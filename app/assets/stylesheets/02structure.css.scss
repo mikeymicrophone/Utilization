@@ -11,6 +11,7 @@ $gray: #A49A87;
 }
 .sans {
 	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 300;
 }
 
 /* structure */
@@ -168,15 +169,7 @@ section{
 			}
 		}
 	}
-	
-	.about {
-		margin: 0.2em 0 1em;
-		label {
-			font-size: 1.3em;
-		}
-		ul {margin-top: 0.5em;}
-	}
-	
+			
 	h2 {
 		font-size: 1.4em;
 		line-height: 1.5em;
@@ -206,18 +199,41 @@ section{
 		span {text-decoration: underline;}
 	}
 	form {
-		margin: 0.2em;
+		margin: 0.4em;
 		label { font-size: 1.2em;}
+		input[type='password'],
+		input[type='email'],
 		input[type='text'] {
 			@extend .sans;
 			border-radius: 6px;
+			padding: 0.3em 0.2em 0.2em;
 		}
+		div { margin-bottom: 0.5em;}
 		input[type='submit']{
 			@extend .new-button;
 			border: none;
 			@extend .sans;
+		}	
+	}
+	form#user_new {
+		a { margin: 0.2em 0;}
+	}
+	.about {
+		margin: 0.2em 0 1em;
+		label {
+			font-size: 1.3em;
+		}
+		a { 
+			font-size: 1.2em;
+			line-height: 1em;
+			padding: 0;
+		}
+		span a {}
+		ul {
+			margin-top: 0.5em;
 		}
 	}
+	
 }
 
 footer{
@@ -228,7 +244,7 @@ footer{
 }
 
 /* mobile version */
-@media all and (max-width:40em) {
+@media all and (max-width:45em) {
 	header h1 {
 		font-size: 4em;
 	}
@@ -243,12 +259,21 @@ footer{
 				}
 		}
 	}
+	#account-bar{
+		a { 
+			display: block;
+			.logout { font-size: 0.7em;}
+		}
+	}
 	section {
 		.things a { border-radius: 6px; }
 	}
+	footer{
+		p { font-size: 0.9em;}
+	}
 }
 
-@media all and (min-width:40em) and (max-width:60em) {
+@media all and (min-width:45em) and (max-width:65em) {
 	header {
 		position: relative;
 		text-align: right;
@@ -270,7 +295,7 @@ footer{
 				a { 
 					display: inline;
 					padding: 0.2em 0.3em;
-					font-size: 1.2em;
+					font-size: 1.1em;
 					border-radius: 6px;
 				}
 		}
@@ -302,7 +327,7 @@ footer{
 			a, span {
 				width: 30%;
 				display: inline;
-				font-size: 1em;
+				font-size: 1.3em;
 				margin: 0.1em;
 			}
 		}
@@ -316,9 +341,39 @@ footer{
 				}
 			}
 		}
+		.about{
+			li {
+				margin: 0.1em 0 0.2em 3em;
+				font-size: 2em;
+				position: relative;
+				a { 
+					max-width: 10em;
+					font-size: smaller;
+					}
+				input {
+					position: absolute;
+					left: 11em;
+					z-index: 99;
+				}
+			}
+		}
+		form {
+			margin: 0.8em auto 0.4em;
+			label { font-size: 1.2em;}
+			input[type='password'],
+			input[type='email'],
+			input[type='text'] {
+				font-size: 1.3em;
+			}
+			div { margin-bottom: 1em;}
+		}
+		
+	}
+	footer{
+		p { font-size: 1em;}
 	}
 }
-@media all and (min-width:60em) {
+@media all and (min-width:65em) {
 	body { 
 		margin: 0 auto;
 		max-width: 1000px;
@@ -390,5 +445,31 @@ footer{
 				}
 			}
 		}
+		.about{
+			li {
+				margin: 0.1em 0 0.2em 3em;
+				font-size: 2em;
+				position: relative;
+				a { max-width: 10em;}
+				input {
+					position: absolute;
+					left: 11em;
+					z-index: 99;
+				}
+			}
+		}
+		form {
+			margin: 1em auto 0.4em;
+			label { font-size: 1.3em;}
+			input[type='password'],
+			input[type='email'],
+			input[type='text'] {
+				font-size: 1.4em;
+			}
+			div { margin-bottom: 1.1em;}
+		}
+	}
+	footer{
+		p { font-size: 1em;}
 	}
 }

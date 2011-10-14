@@ -1,8 +1,8 @@
 <h1>Plans</h1>
 
-<ul class='things aspiration'>
+<ul class=' aspiration'>
 <% @aspirations.each do |aspiration| %>
-  <%= div_for aspiration do %>
+  <%= div_for aspiration, :class => 'about'  do %>
     <li><%= link_to aspiration.user.name, aspiration.user %> <span><%= link_to 'wants to use', aspiration %></span> <%= link_to aspiration.thing.name, aspiration.thing %></li>
   <% end %>
 <% end %>
