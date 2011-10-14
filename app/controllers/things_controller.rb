@@ -22,7 +22,11 @@ class ThingsController < ApplicationController
     #by creator, creators in random order
     #hr between days
     
-    @things = Thing.shuffled
+    @things = if params[:sort].present?
+      Thing.send params[:sort]
+    else
+      Thing.shuffled
+    end
 
     respond_to do |format|
       format.html # index.html.erb

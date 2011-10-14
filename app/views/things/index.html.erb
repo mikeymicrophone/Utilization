@@ -1,6 +1,12 @@
 <h1>Here's some things.</h1>
+<%= link_to 'Sort.', {:sort => 'alphabetical'} %>
+<%= link_to 'What\'s new', {:sort => 'newest'} %>
+<%= link_to 'by user', {:sort => 'by_user'} %>
 
-<%= link_to 'New Thing', new_thing_path, :class => 'new-button' %>
+<%= form_for Thing.new do |f| %>
+  <%= f.text_field :name %>
+<% end %>
+<%= link_to_function 'New Thing', "$('#new_thing').submit()", :class => 'new-button' %>
 
 <ul class='things list clearfix'>
 	<% @things.each do |thing| %>

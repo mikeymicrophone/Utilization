@@ -10,5 +10,8 @@ class Thing < ActiveRecord::Base
   has_many :owners, :through => :possessions, :source => :user
   has_many :aspiring_users, :through => :possessions, :source => :user
   
+  scope :alphabetical, order('name')
+  scope :newest, order('created_at desc')
+  scope :by_user, order('user_id desc')
   scope :shuffled, order('random()')
 end
