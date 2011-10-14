@@ -4,6 +4,6 @@ class UsersHaveCurrentCity < ActiveRecord::Migration
   end
 
   def down
-    remove_column :users, :city
+    # remove_column :users, :city
   end
 end
