@@ -15,7 +15,7 @@ class FacebookController < ApplicationController
          :facebook_id => current_facebook_user.id,
          :access_token => current_facebook_user.client.access_token,
          :city => current_facebook_user.location
-        @user.confirm!
+        # @user.confirm!
         sign_in @user
       end
     end

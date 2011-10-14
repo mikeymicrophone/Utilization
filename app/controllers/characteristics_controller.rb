@@ -1,4 +1,10 @@
 class CharacteristicsController < ApplicationController
+  def patrons
+    @characteristic = Characteristic.find params[:id]
+    @users = @characteristic.users
+    render :action => 'users/index'
+  end
+
   # GET /characteristics
   # GET /characteristics.json
   def index

@@ -1,0 +1,8 @@
+<li>
+  <%= link_to thing.name, thing %>
+	<% if thing.description.present? %>
+	  <div>
+	    <%= thing.description %>
+	  </div>
+	<% end %>
+</li>

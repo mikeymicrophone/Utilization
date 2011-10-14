@@ -1,7 +1,11 @@
 Utilization::Application.routes.draw do
   resources :patronages
 
-  resources :characteristics
+  resources :characteristics do
+    member do
+      get :patrons
+    end
+  end
 
   resources :details
 
