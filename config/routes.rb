@@ -1,4 +1,10 @@
 Utilization::Application.routes.draw do
+  resources :patronages
+
+  resources :characteristics
+
+  resources :details
+
   resources :aspirations
 
   resources :possessions

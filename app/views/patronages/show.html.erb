@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Characteristic:</b>
+  <%= @patronage.characteristic %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @patronage.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_patronage_path(@patronage) %> |
+<%= link_to 'Back', patronages_path %>

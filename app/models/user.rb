@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :aspirations
   has_many :aspired_things, :through => :aspirations, :source => :thing
   
+  has_many :patronages
+  has_many :characteristics, :through => :patronages
+  
   def name
     first_name.to_s + ' ' + last_name.to_s
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111013232323) do
+ActiveRecord::Schema.define(:version => 20111013235952) do
 
   create_table "appreciations", :force => true do |t|
     t.integer  "thing_id"
@@ -32,6 +32,35 @@ ActiveRecord::Schema.define(:version => 20111013232323) do
 
   add_index "aspirations", ["thing_id"], :name => "index_aspirations_on_thing_id"
   add_index "aspirations", ["user_id"], :name => "index_aspirations_on_user_id"
+
+  create_table "characteristics", :force => true do |t|
+    t.integer  "detail_id"
+    t.integer  "thing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "characteristics", ["detail_id"], :name => "index_characteristics_on_detail_id"
+  add_index "characteristics", ["thing_id"], :name => "index_characteristics_on_thing_id"
+
+  create_table "details", :force => true do |t|
+    t.text     "text"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "details", ["user_id"], :name => "index_details_on_user_id"
+
+  create_table "patronages", :force => true do |t|
+    t.integer  "characteristic_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "patronages", ["characteristic_id"], :name => "index_patronages_on_characteristic_id"
+  add_index "patronages", ["user_id"], :name => "index_patronages_on_user_id"
 
   create_table "possessions", :force => true do |t|
     t.integer  "thing_id"

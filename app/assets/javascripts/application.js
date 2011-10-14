@@ -16,6 +16,13 @@ function share_activity_on_open_graph(app, action, thing_id, domain) {
 		}
 	});
 }
+
+$(function() {
+	$('.explanation').change(function(e) {
+		$.post('/patronages', {thing_id: $(e.currentTarget).data('thing_id'), detail_text: e.currentTarget.value});
+		$(e.currentTarget).val('');
+	})
+})
 // 
 // function have_thing(id) {
 // 	FB.api('/me/utilization:have?thing=http://3gj2.localtunnel.com/things/' + id, 'post');

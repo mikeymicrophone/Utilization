@@ -12,7 +12,15 @@
 	<label>Likes:</label>
 	<ul>
 	<% @user.appreciated_things.each do |thing| %>
-	  <li><%= link_to thing.name, thing %></li>
+	  <li>
+	    <%= link_to thing.name, thing %>
+	    <%= text_field_tag dom_id(thing, :detail_about), nil, :placeholder => 'Why?', :class => 'explanation', :'data-thing_id' => thing.id %>
+	    <ul>
+  	    <% thing.patronages.by_user(@user).each do |c| %>
+  	      <li><%= c.detail.text %></li>
+  	    <% end %>
+  	  </ul>
+	  </li>
 	<% end %>
 	</ul>
 </div>

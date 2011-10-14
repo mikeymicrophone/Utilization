@@ -17,7 +17,12 @@ class ThingsController < ApplicationController
   # GET /things
   # GET /things.json
   def index
-    @things = Thing.all
+    #randomize things
+    #sort things
+    #by creator, creators in random order
+    #hr between days
+    
+    @things = Thing.shuffled
 
     respond_to do |format|
       format.html # index.html.erb
