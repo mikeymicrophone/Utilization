@@ -7,6 +7,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(function() {
+	$('#new_thing').submit(function() {
+    $.post('/things', {thing: {name: $('#thing_name').val()}});
+    return false;
+  });
+});
+
 function share_activity_on_open_graph(app, action, thing_id, domain) {
 	console.log('/me/' + app + ':' + action + '?thing=http://' + domain + '/things/' + thing_id);
 	FB.api('/me/' + app + ':' + action + '?thing=http://' + domain + '/things/' + thing_id, 'post', function(response) {

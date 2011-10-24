@@ -92,7 +92,7 @@ section{
 		line-height: 1.5em;
 		background-color: $yellow;
 		padding: 0.2em;
-		margin: 0.1em;
+		margin: 0.8em;
 		box-shadow: 1px 1px 2px lighten($yellow, 10%);
 		&:hover{
 			background-color: lighten($yellow, 10%);
@@ -101,6 +101,15 @@ section{
 		&:active{
 			background-color: lighten($yellow, 15%);
 			box-shadow: 1px 1px 2px lighten($yellow, 20%);
+		}
+	}
+	.sort {
+		padding: 0.7em;
+		li {
+			display: inline;
+			padding: 0.6em;
+			font-style: italic;
+			text-transform: uppercase;
 		}
 	}
 	.things {
@@ -217,6 +226,12 @@ section{
 	}
 	form#user_new {
 		a { margin: 0.2em 0;}
+	}
+	form#new_thing {
+		float: right;
+	}
+	.new-button {
+		float: right;
 	}
 	.about {
 		margin: 0.2em 0 1em;
