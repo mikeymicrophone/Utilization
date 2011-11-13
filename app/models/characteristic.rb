@@ -7,6 +7,8 @@ class Characteristic < ActiveRecord::Base
   attr_accessor :detail_text
   before_create :grab_detail
   
+  validates_uniqueness_of :detail_id, :scope => :thing_id
+  
   def grab_detail
     self.detail = Detail.find_or_create_by_text detail_text if detail_text.present?
   end
