@@ -12,13 +12,11 @@
   <li><%= link_to 'alphabetical', {:sort => 'alphabetical'} %></li>
   <li><%= link_to 'newest', {:sort => 'newest'} %></li>
   <li><%= link_to 'by user', {:sort => 'by_user'} %></li>
+  <li><%= link_to 'random', {:sort => nil} %></li>
 </ul>
 
 <ul class='things list clearfix'>
-	<% @things.each do |thing| %>
- 		<li>
- 		  <%= link_to thing.name, thing %>
-		</li>
-	<% end %>
+	<%= render @things %>
 </ul>
 <br />
+<%= paginate @things, :remote => true %>

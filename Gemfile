@@ -18,6 +18,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'facebooker2'
 gem 'andand'
+gem 'kaminari'
 
 # Use unicorn as the web server
 # gem 'unicorn'

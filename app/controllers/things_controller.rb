@@ -21,11 +21,12 @@ class ThingsController < ApplicationController
       Thing.send params[:sort]
     else
       Thing.shuffled
-    end
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @things }
+      format.js
     end
   end
 
