@@ -124,6 +124,18 @@ section{
 				color: $purple1;
 			}
 			span a {font-style: italic; }
+			.actions {
+				display: inline-block;
+				float: right;
+				margin-top: -30px;
+				a {
+					float: right;
+					padding: 0px;
+					margin: 1px;
+					width: 15px;
+					background-color: $orange;
+				}
+			}
 		}
 	}
 	.list { 
@@ -463,7 +475,6 @@ footer{
 		.about{
 			li {
 				margin: 0.1em 0 0.2em 3em;
-				font-size: 2em;
 				position: relative;
 				a { max-width: 10em;}
 				input {

@@ -1,8 +1,12 @@
 <li>
   <%= link_to thing.name, thing %>
-	<% if thing.description.present? %>
-	  <div>
-	    <%= thing.description %>
-	  </div>
-	<% end %>
+  <div class='actions'>
+    <% if current_user %>
+      <%= link_to 'i', appreciations_path(:appreciation => {:user_id => current_user.id, :thing_id => thing.id}), :method => :post, :remote => true, :id => 'appreciate_link', :class => 'action', :title => 'I am interested' unless current_user.appreciates?(thing) %>
+
+      <%= link_to 'h', possessions_path(:possession => {:user_id => current_user.id, :thing_id => thing.id}), :method => :post, :remote => true, :id => 'possess_link', :class => 'action', :title => 'I have one' unless current_user.possesses?(thing) %>
+
+      <%= link_to 't', aspirations_path(:aspiration => {:user_id => current_user.id, :thing_id => thing.id}), :method => :post, :remote => true, :id => 'aspire_link', :class => 'action', :title => 'I want to try it' unless current_user.aspires_to_use?(thing) %>
+    <% end %>
+  </div>
 </li>
