@@ -63,7 +63,7 @@
 <%= link_to "Edit #{@thing.name}", edit_thing_path(@thing) if @thing.user == current_user %>
 
 <%= content_for :fb_og_meta_tags do %> 
-  <meta property="og:type" content="utilization:thing" /> 
+  <meta property="og:type" content="<%= Facebooker2.instance_variable_get('@namespace') %>:thing" /> 
   <meta property="og:title" content="<%= @thing.name %>" /> 
   <meta property="og:image" content="<%= @thing.photo_url.present? ? @thing.photo_url : 'http://school.discoveryeducation.com/clipart/images/backpack.gif'%>" /> 
   <meta property="og:description" content="<%= @thing.description.present? ? @thing.description : @thing.name %>" />

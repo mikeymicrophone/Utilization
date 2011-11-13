@@ -1,2 +1,4 @@
 $('#possess_link').remove();
-share_activity_on_open_graph('<%= Facebooker2.instance_variable_get('@namespace') %>', 'have', <%= @possession.thing_id %>, '<%= request.host %>');
+<% if current_user.facebook_id.present? %>
+	share_activity_on_open_graph(<%= current_user.facebook_id %>, '<%= Facebooker2.instance_variable_get('@namespace') %>', 'have', <%= @possession.thing_id %>, '<%= request.host %>');
+<% end %>

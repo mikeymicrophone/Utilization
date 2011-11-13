@@ -14,11 +14,9 @@ $(function() {
   });
 });
 
-function share_activity_on_open_graph(app, action, thing_id, domain) {
-	console.log('/me/' + app + ':' + action + '?thing=http://' + domain + '/things/' + thing_id);
-	FB.api('/me/' + app + ':' + action + '?thing=http://' + domain + '/things/' + thing_id, 'post', function(response) {
-		if (!response || response.error) {
-			console.log(response);
+function share_activity_on_open_graph(fbuid, app, action, thing_id, domain) {
+	FB.api('/' + fbuid + '/' + app + ':' + action + '?thing=http://' + domain + '/things/' + thing_id, 'post', function(response) {
+		if (response.error) {
 			console.log(response.error);
 		}
 	});
