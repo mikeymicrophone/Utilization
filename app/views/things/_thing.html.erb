@@ -2,6 +2,8 @@
   <%= link_to thing.name, thing %>
   <div class='actions'>
     <% if current_user %>
+      <%= link_to 'k', expertises_path(:expertise => {:user_id => current_user.id, :thing_id => thing.id}), :method => :post, :remote => true, :id => 'expertise_link', :class => 'action', :title => 'I know how to use this' unless current_user.is_expert_on?(thing) %>
+    
       <%= link_to 'i', appreciations_path(:appreciation => {:user_id => current_user.id, :thing_id => thing.id}), :method => :post, :remote => true, :id => 'appreciate_link', :class => 'action', :title => 'I am interested' unless current_user.appreciates?(thing) %>
 
       <%= link_to 'h', possessions_path(:possession => {:user_id => current_user.id, :thing_id => thing.id}), :method => :post, :remote => true, :id => 'possess_link', :class => 'action', :title => 'I have one' unless current_user.possesses?(thing) %>

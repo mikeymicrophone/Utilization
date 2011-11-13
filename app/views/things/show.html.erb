@@ -21,6 +21,13 @@
     <% else %>
       <%= link_to 'I want to use this.', aspirations_path(:aspiration => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'aspire_link', :class => 'action' %>
     <% end %>
+    
+    <% if current_user.is_expert_on?(@thing) %>
+     <span>You know how to use this.</span>
+    <% else %>
+      <%= link_to 'I know how to use this.', expertises_path(:expertise => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'expertise_link', :class => 'action' %>
+    <% end %>
+    
   <% end %>
 </div>
 
@@ -30,6 +37,7 @@
 		<li><%= link_to(pluralize(@thing.appreciations.count, 'person') + (@thing.appreciations.count == 1 ? ' appreciates' : ' appreciate') + ' this.', appreciators_thing_path(@thing)) %></li>
 		<li><%= link_to(pluralize(@thing.possessions.count, 'person') + (@thing.possessions.count == 1 ? ' has' : ' have') + ' one.', owners_thing_path(@thing)) %></li>
 		<li><%= link_to(pluralize(@thing.aspirations.count, 'person') + ' would like to use it.', aspiring_users_thing_path(@thing)) %></li>
+		<li><%= link_to(pluralize(@thing.expertises.count, 'person') + (@thing.possessions.count == 1 ? ' knows' : ' know') + ' how to use this.', experts_thing_path(@thing)) %></li>
 	</ul>
 </div>		
 

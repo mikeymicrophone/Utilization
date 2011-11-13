@@ -6,9 +6,11 @@ class Thing < ActiveRecord::Base
   has_many :appreciations
   has_many :aspirations
   has_many :possessions
+  has_many :expertises
   has_many :appreciators, :through => :appreciations, :source => :user
   has_many :owners, :through => :possessions, :source => :user
   has_many :aspiring_users, :through => :possessions, :source => :user
+  has_many :experts, :through => :expertises, :source => :user
   
   scope :alphabetical, order('name')
   scope :newest, order('created_at desc')

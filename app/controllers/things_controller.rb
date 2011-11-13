@@ -1,6 +1,6 @@
 class ThingsController < ApplicationController
-  before_filter :get_thing, :get_users, :only => [:owners, :appreciators, :aspiring_users]
-  after_filter :friend_ids, :your_city, :only => [:owners, :appreciators, :aspiring_users]
+  before_filter :get_thing, :get_users, :only => [:owners, :appreciators, :aspiring_users, :experts]
+  after_filter :friend_ids, :your_city, :only => [:owners, :appreciators, :aspiring_users, :experts]
   
   def owners
     render :action => 'users/index'
@@ -11,6 +11,10 @@ class ThingsController < ApplicationController
   end
   
   def aspiring_users
+    render :action => 'users/index'
+  end
+  
+  def experts
     render :action => 'users/index'
   end
   

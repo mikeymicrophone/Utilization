@@ -1,0 +1,25 @@
+<h1>Listing expertises</h1>
+
+<table>
+  <tr>
+    <th>Thing</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @expertises.each do |expertise| %>
+  <tr>
+    <td><%= expertise.thing %></td>
+    <td><%= expertise.user %></td>
+    <td><%= link_to 'Show', expertise %></td>
+    <td><%= link_to 'Edit', edit_expertise_path(expertise) %></td>
+    <td><%= link_to 'Destroy', expertise, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Expertise', new_expertise_path %>

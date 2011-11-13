@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :possessed_things, :through => :possessions, :source => :thing
   has_many :aspirations
   has_many :aspired_things, :through => :aspirations, :source => :thing
+  has_many :expertises
+  has_many :expertised_things, :through => :expertises, :source => :thing
   
   has_many :patronages
   has_many :characteristics, :through => :patronages
@@ -29,6 +31,10 @@ class User < ActiveRecord::Base
   
   def aspires_to_use? thing
     aspired_things.include? thing
+  end
+  
+  def is_expert_on? thing
+    expertised_things.include? thing
   end
   
   def password_required?

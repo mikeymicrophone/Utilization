@@ -1,4 +1,6 @@
 Utilization::Application.routes.draw do
+  resources :expertises
+
   resources :patronages
 
   resources :characteristics do
@@ -27,6 +29,7 @@ Utilization::Application.routes.draw do
       get :owners
       get :appreciators
       get :aspiring_users
+      get :experts
     end
   end
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111013235952) do
+ActiveRecord::Schema.define(:version => 20111113195807) do
 
   create_table "appreciations", :force => true do |t|
     t.integer  "thing_id"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(:version => 20111013235952) do
   end
 
   add_index "details", ["user_id"], :name => "index_details_on_user_id"
+
+  create_table "expertises", :force => true do |t|
+    t.integer  "thing_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "expertises", ["thing_id"], :name => "index_expertises_on_thing_id"
+  add_index "expertises", ["user_id"], :name => "index_expertises_on_user_id"
 
   create_table "patronages", :force => true do |t|
     t.integer  "characteristic_id"
