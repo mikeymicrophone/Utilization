@@ -1,0 +1,4 @@
+$('#expertise_link').remove();
+<% if current_user.facebook_id.present? %>
+	share_activity_on_open_graph(<%= current_user.facebook_id %>, '<%= Facebooker2.instance_variable_get('@namespace') %>', 'know_how_to_use', <%= @expertise.thing_id %>, '<%= request.host %>');
+<% end %>

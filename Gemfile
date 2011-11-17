@@ -36,9 +36,12 @@ end
 group :development do
   gem 'sqlite3'
   gem 'ruby-debug19'
+  gem 'rspec-rails'
 end
 
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+  gem 'rspec-rails'
+  gem 'rr'
 end

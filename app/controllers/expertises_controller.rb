@@ -44,6 +44,7 @@ class ExpertisesController < ApplicationController
 
     respond_to do |format|
       if @expertise.save
+        format.js
         format.html { redirect_to @expertise, notice: 'Expertise was successfully created.' }
         format.json { render json: @expertise, status: :created, location: @expertise }
       else

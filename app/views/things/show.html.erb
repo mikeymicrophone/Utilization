@@ -5,27 +5,27 @@
 <div id='actions'>
   <% if current_user %>
     <% if current_user.appreciates?(@thing) %>
-      <span>You appreciate this.</span>
+      <span>You appreciate <%= @thing.name.pluralize %>.</span>
     <% else %>
-      <%= link_to 'I appreciate this!', appreciations_path(:appreciation => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'appreciate_link', :class => 'action' %>
+      <%= link_to 'I appreciate ' + @thing.name.pluralize + '.', appreciations_path(:appreciation => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'appreciate_link', :class => 'action' %>
     <% end %>
 
     <% if current_user.possesses?(@thing) %>
-      <span>You possess this.</span>
+      <span>You possess a <%= @thing.name %>.</span>
     <% else %>
-      <%= link_to 'I possess this.', possessions_path(:possession => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'possess_link', :class => 'action' %>
+      <%= link_to 'I possess a ' + @thing.name + '.', possessions_path(:possession => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'possess_link', :class => 'action' %>
     <% end %>
   
     <% if current_user.aspires_to_use?(@thing) %>
-     <span>You would like to use this.</span>
+     <span>You would like to use a <%= @thing.name %>.</span>
     <% else %>
-      <%= link_to 'I want to use this.', aspirations_path(:aspiration => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'aspire_link', :class => 'action' %>
+      <%= link_to 'I want to use a ' + @thing.name + '.', aspirations_path(:aspiration => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'aspire_link', :class => 'action' %>
     <% end %>
     
     <% if current_user.is_expert_on?(@thing) %>
-     <span>You know how to use this.</span>
+     <span>You know how to use a <%= @thing.name %>.</span>
     <% else %>
-      <%= link_to 'I know how to use this.', expertises_path(:expertise => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'expertise_link', :class => 'action' %>
+      <%= link_to 'I know how to use a ' + @thing.name + '.', expertises_path(:expertise => {:user_id => current_user.id, :thing_id => @thing.id}), :method => :post, :remote => true, :id => 'expertise_link', :class => 'action' %>
     <% end %>
     
   <% end %>
@@ -34,10 +34,10 @@
 <div class='rollup'>
 	<label>You're not alone</label>
 	<ul>
-		<li><%= link_to(pluralize(@thing.appreciations.count, 'person') + (@thing.appreciations.count == 1 ? ' appreciates' : ' appreciate') + ' this.', appreciators_thing_path(@thing)) %></li>
-		<li><%= link_to(pluralize(@thing.possessions.count, 'person') + (@thing.possessions.count == 1 ? ' has' : ' have') + ' one.', owners_thing_path(@thing)) %></li>
-		<li><%= link_to(pluralize(@thing.aspirations.count, 'person') + ' would like to use it.', aspiring_users_thing_path(@thing)) %></li>
-		<li><%= link_to(pluralize(@thing.expertises.count, 'person') + (@thing.possessions.count == 1 ? ' knows' : ' know') + ' how to use this.', experts_thing_path(@thing)) %></li>
+		<li><%= link_to(pluralize(@thing.appreciations.count, 'person') + (@thing.appreciations.count == 1 ? ' appreciates' : ' appreciate') + ' ' + @thing.name.pluralize + '.', appreciators_thing_path(@thing)) %></li>
+		<li><%= link_to(pluralize(@thing.possessions.count, 'person') + (@thing.possessions.count == 1 ? ' has a ' + @thing.name + '.' : ' have ' + @thing.name.pluralize + '.'), owners_thing_path(@thing)) %></li>
+		<li><%= link_to(pluralize(@thing.owners.count, 'person') + ' would like to use a ' + @thing.name + '.', aspiring_users_thing_path(@thing)) %></li>
+		<li><%= link_to(pluralize(@thing.expertises.count, 'person') + (@thing.expertises.count == 1 ? ' knows' : ' know') + ' how to use a ' + @thing.name + '.', experts_thing_path(@thing)) %></li>
 	</ul>
 </div>		
 
